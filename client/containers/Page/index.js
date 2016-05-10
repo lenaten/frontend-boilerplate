@@ -1,23 +1,17 @@
 
-import React, { PropTypes } from 'react';
+import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as Actions from '../../actions/action';
+import HelloWorld from '../../components/HelloWorld';
 
-function App(props) {
-  const { children } = props;
+function Page() {
   return (
     <div>
-      <p>Header</p>
-      {children}
-      <p>Footer</p>
+      <HelloWorld />
     </div>
   );
 }
-
-App.propTypes = {
-  children: PropTypes.object,
-};
 
 function mapStateToProps(state) {
   return {
@@ -34,4 +28,4 @@ function mapDispatchToProps(dispatch) {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(App);
+)(Page);

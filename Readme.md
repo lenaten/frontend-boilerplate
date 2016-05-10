@@ -36,6 +36,12 @@ $ npm start
 $ npm run build
 ```
 
+## Test
+
+```
+$ npm test
+```
+
 ## Note
 
 This is just my personal boilerplate, it may or may not be a good fit for your project(s).

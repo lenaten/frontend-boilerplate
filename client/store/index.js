@@ -1,26 +1,28 @@
 
-import { createStore, applyMiddleware } from 'redux'
+import { createStore, applyMiddleware, compose } from 'redux';
+import thunk from 'redux-thunk';
+import { apiMiddleware } from 'redux-api-middleware';
+import createLogger from 'redux-logger';
 
-import { logger } from '../middleware'
-import rootReducer from '../reducers'
+import rootReducer from '../reducers';
 
 export default function configure(initialState) {
   const create = window.devToolsExtension
     ? window.devToolsExtension()(createStore)
-    : createStore
+    : createStore;
 
-  const createStoreWithMiddleware = applyMiddleware(
-    logger
-  )(create)
+  const createStoreWithMiddleware = compose(
+    applyMiddleware(thunk, apiMiddleware),
+    applyMiddleware(createLogger({ collapsed: true }))
+  )(create);
 
-  const store = createStoreWithMiddleware(rootReducer, initialState)
+  const store = createStoreWithMiddleware(rootReducer, initialState);
 
   if (module.hot) {
     module.hot.accept('../reducers', () => {
-      const nextReducer = require('../reducers')
-      store.replaceReducer(nextReducer)
-    })
+      store.replaceReducer(rootReducer);
+    });
   }
 
-  return store
+  return store;
 }

@@ -4,6 +4,7 @@ var path = require('path')
 
 module.exports = {
   context: path.join(__dirname, './client'),
+  devtool: 'cheap-module-inline-source-map',
   entry: {
     jsx: './index.js',
     html: './index.html',
@@ -17,10 +18,17 @@ module.exports = {
     ]
   },
   output: {
-    path: path.join(__dirname, './static'),
+    path: path.join(__dirname, './build'),
     filename: 'bundle.js',
   },
   module: {
+    preLoaders: [
+      {
+        test: /\.js$/,
+        loaders: ['eslint'],
+        include: path.join(__dirname, './client')
+      }
+    ],
     loaders: [
       {
         test: /\.html$/,
