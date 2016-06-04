@@ -8,11 +8,14 @@
     "start": "webpack-dev-server -d --history-api-fallback --hot --inline --progress --colors --port 3000",
     "build": "NODE_ENV=production webpack --progress --colors",
     "test": "mocha ./client/test --compilers js:babel-register --recursive",
-    "test:watch": "npm run test -- --watch"
+    "test:watch": "npm run test -- --watch",
+    "lint": "eslint . --fix",
+    "flow": "flow"
   },
   "license": "MIT",
   "devDependencies": {
     "babel-core": "^6.5.2",
+    "babel-eslint": "^6.0.4",
     "babel-loader": "^6.2.3",
     "babel-plugin-transform-runtime": "^6.5.2",
     "babel-preset-es2015": "^6.5.0",
@@ -30,6 +33,7 @@
     "eslint-plugin-react": "^5.0.1",
     "expect": "^1.20.1",
     "file-loader": "^0.8.5",
+    "flow-bin": "^0.26.0",
     "mocha": "^2.4.5",
     "postcss-loader": "^0.8.1",
     "react": "^15.0.0",

@@ -1,3 +1,4 @@
+/* @flow */
 
 import React from 'react';
 import { bindActionCreators } from 'redux';
@@ -8,7 +9,7 @@ import HelloWorld from '../../components/HelloWorld';
 function Page() {
   return (
     <div>
-      <HelloWorld />
+      <HelloWorld text="Hello World" />
     </div>
   );
 }

@@ -6,7 +6,7 @@ export function fetch() {
     [CALL_API]: {
       endpoint: 'http://www.example.com/',
       method: 'GET',
-      types: ['async request', 'async success', 'async failure']
-    }
-  } 
+      types: ['async request', 'async success', 'async failure'],
+    },
+  };
 }
